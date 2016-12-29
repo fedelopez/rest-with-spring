@@ -1,7 +1,6 @@
 package cat.pseudocodi;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,6 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author fede
- */
 @Controller
 class SolarSystemController {
 
@@ -38,9 +34,7 @@ class SolarSystemController {
     @ResponseBody
     ResponseEntity<?> addMoon(@RequestBody Moon moon) {
         store.addMoon(moon);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setLocation(getLocationForCreated(moon));
-        return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+        return ResponseEntity.created(getLocationForCreated(moon)).build();
     }
 
     private URI getLocationForCreated(Moon moon) {

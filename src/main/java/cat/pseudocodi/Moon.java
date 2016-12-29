@@ -1,10 +1,8 @@
 package cat.pseudocodi;
 
-/**
- * @author fede
- */
 public class Moon {
 
+    private int id;
     private String name;
     private String planet;
 
@@ -24,6 +22,14 @@ public class Moon {
         return planet;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,5 +47,14 @@ public class Moon {
         int result = name.hashCode();
         result = 31 * result + planet.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Moon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", planet='" + planet + '\'' +
+                '}';
     }
 }

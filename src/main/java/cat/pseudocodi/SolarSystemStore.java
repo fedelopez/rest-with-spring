@@ -1,5 +1,6 @@
 package cat.pseudocodi;
 
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -7,14 +8,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author fede
- */
 @Component
 class SolarSystemStore {
 
     private final List<Moon> moons = new ArrayList<>();
 
+    @Pointcut("execution(* cat.pseudocodi.SolarSystemStore.addMoon(..)) && args(moon)")
     void addMoon(Moon moon) {
         moons.add(moon);
     }
